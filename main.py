@@ -134,8 +134,9 @@ def start_timer():
     if mins == 60 :
         mins = 0 
         hours +=1 
-    Timer_label = tk.Label( timer_tab, text= f"{hours}:{mins}:{seconds}", bg="#f57cab" , font="MathJax_TypeWriter")
-    Timer_label.pack()
+    Timer_label = tk.Label( timer_tab, text= f"{hours:02}:{mins:02}:{seconds:02}", bg="#f57cab" , font="MathJax_TypeWriter" )
+    Timer_label.place(x = 160 , y = 160)
+    Timer_label.config(font=("MathJax_TypeWriter" , 50))
 def start():
     
     global start_stop
@@ -147,10 +148,10 @@ def stop():
     global start_stop
     if start_stop == True :
         start_stop = False
-start_button = tk.Button(timer_tab , text="start" , command= start)
-start_button.pack()
-stop_button = tk.Button(timer_tab , text= "stop" , command= stop)
-stop_button.pack()
+start_button = tk.Button(timer_tab , text="start" , command= start ,bg="#f57cab" , font="MathJax_TypeWriter" )
+start_button.place(x =160 , y = 230)
+stop_button = tk.Button(timer_tab , text= "stop" , command= stop, bg="#f57cab" , font="MathJax_TypeWriter" )
+stop_button.place(x =384 , y = 230)
 
 
 
