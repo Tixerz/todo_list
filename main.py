@@ -1,6 +1,7 @@
 from category import category
 import tkinter as tk
 from tkinter import ttk
+import time
 
 import pickle as pk
 import os
@@ -103,8 +104,53 @@ add_button.place(x= 220 , y =90)
 
 timer_tab = tk.Frame(notebook , width= 600 , height= 400  ,bg="#ebbfd0")
 timer_tab.pack()
-notebook.add(timer_tab , text="timer"  )
+notebook.add(timer_tab , text="timer"   )
 
+
+seconds = 0 
+mins = 0
+hours = 0
+
+start_stop = False
+
+Timer_label = tk.Label( timer_tab, text= f"{hours}:{mins}:{seconds}" , bg="#f57cab" , font="MathJax_TypeWriter")
+def start_timer():
+    global Timer_label
+    global start_stop
+    global seconds
+    global mins
+    global hours
+
+
+    
+    
+    if start_stop == True : 
+        Timer_label.after(1000 , start_timer)
+    
+    seconds +=1
+    if seconds == 60 :
+        seconds =0
+        mins +=1
+    if mins == 60 :
+        mins = 0 
+        hours +=1 
+    Timer_label = tk.Label( timer_tab, text= f"{hours}:{mins}:{seconds}", bg="#f57cab" , font="MathJax_TypeWriter")
+    Timer_label.pack()
+def start():
+    
+    global start_stop
+    if start_stop == False :
+        start_stop = True 
+        start_timer()
+
+def stop():
+    global start_stop
+    if start_stop == True :
+        start_stop = False
+start_button = tk.Button(timer_tab , text="start" , command= start)
+start_button.pack()
+stop_button = tk.Button(timer_tab , text= "stop" , command= stop)
+stop_button.pack()
 
 
 
