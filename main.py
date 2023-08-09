@@ -5,6 +5,9 @@ from tkinter import ttk
 import pickle as pk
 import os
 
+
+
+
 category_list = []
 
 for item in os.listdir() :  #loading the saved objects
@@ -13,7 +16,9 @@ for item in os.listdir() :  #loading the saved objects
             category_list.append(pk.load(file))
 
 window = tk.Tk()
+
 window.geometry("600x400" )
+
 category_text_label = tk.Label(text="category:" , bg = "#ebbfd0" , font="MathJax_TypeWriter") 
 category_text_label.place( x=0 , y= 10)
 list1 = [item.name for i in category_list] #cat list
@@ -34,8 +39,8 @@ def delete():
 
 list_box.place(x=32,y=90)
 delete_button = tk.Button(window , command= delete , text= "Delete" , bg="#f57cab" , font="MathJax_TypeWriter")
-delete_button.place(x = 170 , y = 130)
-list_box.place(x = 0 , y = 80)
+delete_button.place(x = 314, y = 160)
+list_box.place(x = 150 , y = 120)
 
 def list_refresh():
     global list_box 
@@ -44,16 +49,16 @@ def list_refresh():
         if item.name == category_list_combobox.get():
             for x in item.data:
                 list_box.insert(0,x)
-    list_box.place(x = 0 , y = 80)
+    list_box.place(x = 150 , y = 120)
     
 refresh_button = tk.Button(window , text= "refresh" , command=list_refresh , bg = "#f57cab" , font="MathJax_TypeWriter")
-refresh_button.place(x= 170, y=80)
+refresh_button.place(x= 314, y=120)
 
 item_label = tk.Label(window , text= " item:" , bg = "#ebbfd0" , font="MathJax_TypeWriter")
-item_label.place(x=0 , y = 40)
+item_label.place(x=0 , y = 70)
 
 entry = tk.Entry(window ,width = 15 , bg="#e9d9db" , font="MathJax_TypeWriter")
-entry.place( x = 80, y = 40)
+entry.place( x = 80, y = 70)
 
 
 
@@ -87,6 +92,15 @@ def add():
     list_refresh()
     
 add_button = tk.Button(window , text= "Add" , command=add , bg="#f57cab" , font="MathJax_TypeWriter") 
-add_button.place(x= 210 , y =40)
+add_button.place(x= 220 , y =70)
+
+tk.Label(window , text = "====================================================================================").place(x=-2 , y=40)
+
+
+
+
+
+
+
 
 window.mainloop()
