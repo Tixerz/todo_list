@@ -113,7 +113,9 @@ hours = 0
 
 start_stop = False
 
-Timer_label = tk.Label( timer_tab, text= f"{hours}:{mins}:{seconds}" , bg="#f57cab" , font="MathJax_TypeWriter")
+Timer_label = tk.Label( timer_tab, text= f"{hours:02}:{mins:02}:{seconds:02}", bg="#f57cab" , font="MathJax_TypeWriter" )
+Timer_label.config(font=("MathJax_TypeWriter" , 50))
+Timer_label.place(x = 160 , y = 160)
 def start_timer():
     global Timer_label
     global start_stop
@@ -152,7 +154,7 @@ start_button = tk.Button(timer_tab , text="start" , command= start ,bg="#f57cab"
 start_button.place(x =160 , y = 230)
 stop_button = tk.Button(timer_tab , text= "stop" , command= stop, bg="#f57cab" , font="MathJax_TypeWriter" )
 stop_button.place(x =384 , y = 230)
-
-
-
+tk.Label(timer_tab , text= "category:" ,bg="#ebbfd0" , font="MathJax_TypeWriter" ).place(x = 120 , y = 100)
+cat_combo = ttk.Combobox(timer_tab  , value = list1  , postcommand=list_refresh )
+cat_combo.place(x= 200 , y = 100)
 window.mainloop()
