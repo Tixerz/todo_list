@@ -128,8 +128,9 @@ def start_timer():
     
     if start_stop == True : 
         Timer_label.after(1000 , start_timer)
+        seconds +=1
     
-    seconds +=1
+    
     if seconds == 60 :
         seconds =0
         mins +=1
@@ -147,9 +148,21 @@ def start():
         start_timer()
 
 def stop():
+    global seconds
+    global mins
+    global hours
+    global cat_combo
     global start_stop
     if start_stop == True :
         start_stop = False
+        for item in category_list :
+            if cat_combo.get() == item.name :
+                item.spent_time(mins + hours*60)
+                seconds = 0
+                mins = 0
+                hours = 0
+                print(item.minuts)
+        
 start_button = tk.Button(timer_tab , text="start" , command= start ,bg="#f57cab" , font="MathJax_TypeWriter" )
 start_button.place(x =160 , y = 230)
 stop_button = tk.Button(timer_tab , text= "stop" , command= stop, bg="#f57cab" , font="MathJax_TypeWriter" )
@@ -164,4 +177,5 @@ cat_combo = ttk.Combobox(timer_tab  , value = list1   )
 cat_combo.place(x= 200 , y = 100)
 reftresh_cat_button = tk.Button(timer_tab , text = "refresh" , command= combo_refresh , bg="#f57cab" , font="MathJax_TypeWriter")
 reftresh_cat_button.place(x= 390 , y = 100)
+
 window.mainloop()
