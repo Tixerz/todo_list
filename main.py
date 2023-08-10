@@ -155,6 +155,13 @@ start_button.place(x =160 , y = 230)
 stop_button = tk.Button(timer_tab , text= "stop" , command= stop, bg="#f57cab" , font="MathJax_TypeWriter" )
 stop_button.place(x =384 , y = 230)
 tk.Label(timer_tab , text= "category:" ,bg="#ebbfd0" , font="MathJax_TypeWriter" ).place(x = 120 , y = 100)
-cat_combo = ttk.Combobox(timer_tab  , value = list1  , postcommand=list_refresh )
+def combo_refresh():
+    global cat_combo
+    global list1
+    cat_combo = ttk.Combobox(timer_tab  , value = list1  )
+    cat_combo.place(x= 200 , y = 100)
+cat_combo = ttk.Combobox(timer_tab  , value = list1   )
 cat_combo.place(x= 200 , y = 100)
+reftresh_cat_button = tk.Button(timer_tab , text = "refresh" , command= combo_refresh , bg="#f57cab" , font="MathJax_TypeWriter")
+reftresh_cat_button.place(x= 390 , y = 100)
 window.mainloop()
