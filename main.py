@@ -161,7 +161,10 @@ def stop():
                 seconds = 0
                 mins = 0
                 hours = 0
-                print(item.minuts)
+                for item in category_list:
+                    tk.Label(status_tab , text=f"{item.name}:\n{item.hours:02}:{item.minuts:02}\n" , bg="#f57cab" , font="MathJax_TypeWriter").pack()
+
+
         
 start_button = tk.Button(timer_tab , text="start" , command= start ,bg="#f57cab" , font="MathJax_TypeWriter" )
 start_button.place(x =160 , y = 230)
@@ -177,5 +180,13 @@ cat_combo = ttk.Combobox(timer_tab  , value = list1   )
 cat_combo.place(x= 200 , y = 100)
 reftresh_cat_button = tk.Button(timer_tab , text = "refresh" , command= combo_refresh , bg="#f57cab" , font="MathJax_TypeWriter")
 reftresh_cat_button.place(x= 390 , y = 100)
+#---------------====================== status ========================--------------
+
+
+status_tab = tk.Frame(notebook , width= 600 , height= 400  ,bg="#ebbfd0")
+status_tab.pack()
+notebook.add(status_tab , text= "status")
+for item in category_list:
+    tk.Label(status_tab , text=f"{item.name}:\n{item.hours:02}:{item.minuts:02}\n" , bg="#f57cab" , font="MathJax_TypeWriter").pack()
 
 window.mainloop()

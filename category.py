@@ -5,6 +5,8 @@ class category:
         self.color =color 
         self.name = name
         self.data = []
+        self.minuts = 0
+        self.hours = 0
         
         
     def edit_name(self,new_name):
@@ -16,12 +18,12 @@ class category:
     def add_item(self,item):
         self.data.append(item)
     def spent_time(self,min):
+        
         if min >=60 :
-            self.hour += min/60
+            self.hours += min/60
             min = min%60
         self.minuts = min
             
             
-    
-        
+
 
